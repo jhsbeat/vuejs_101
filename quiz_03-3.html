@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>Vue event</title>
+</head>
+<body>
+<div id="app">
+    <child-component v-bind:propsdata="message"></child-component>
+    <sibling-component v-bind:another_propsdata="anotherMessage"></sibling-component>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script>
+    Vue.component('sibling-component', {
+        template: '<p>{{ another_propsdata }}</p>',
+        props: ['another_propsdata']
+    });
+
+    Vue.component('child-component', {
+       props: ['propsdata'],
+       template: '<p>{{ propsdata }}</p>'
+    });
+
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue! passed from Parent Component',
+            anotherMessage: 'Hello Vue! this is an another message from Parent Component'
+        }
+    });
+</script>
+</body>
+</html>
