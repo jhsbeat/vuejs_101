@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>Vue Template - Data binding, Directives, etc.</title>
+</head>
+<body>
+<div id="app">
+    {{ message }}
+    <br />
+    {{ secondMessage }}
+    <br />
+    <input v-model="uid" />
+    <br />
+    <button v-on:click="clickAnotherBtn">Another Button</button>
+    <br />
+    <p v-if="flag">Hello if flag. {{ flag }}</p>
+    <p v-show="flag">Hello show flag. {{ flag }}</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue.js',
+            secondMessage: 'Hello Second Message.',
+            uid: 10,
+            flag: false
+        },
+        watch: {
+            uid: function(data){
+                console.log("uid 값이 바뀝니다. : ", data);
+            }
+        },
+        methods: {
+            clickAnotherBtn: function(event){
+                console.log('clickAnotherBtn: ', event);
+            }
+        }
+    });
+</script>
+</body>
+</html>
